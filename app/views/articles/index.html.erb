@@ -18,6 +18,7 @@
         <td><%= x.description %></td>
         <td><%= link_to 'Edit', edit_article_path(x) %></td>
         <td><%= link_to 'View', article_path(x) %></td>
+        <td><%= link_to 'Delete', article_path(x), method: :delete, data: {confirm: "Are you sure to delete this article"} %></td>
     </tr>
 
 
