@@ -8,9 +8,29 @@
 </head>
 <body>
   
+  <header class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+      <%= link_to 'My Recipe', root_path, class: "btn btn-lg btn-success", id: "logo" %>
+      <div class="nav_item">
+        <%= link_to 'link1', " ", class: "btn btn-default btn-warning" %>
+      </div>
+      <div class="nav_item">
+        <%= link_to 'link1', " ", class: "btn btn-default btn-warning" %>
+      </div>
+      <div class="nav_item">
+        <%= link_to 'link1', " ", class: "btn btn-default btn-warning" %>
+      </div>
+    </div>
+  </header>
+
 <%= render 'layouts/messages' %>
 
-<%= yield %>
 
+<%= yield %>
+<div class="container">
+  <div class="footer">
+    <p>&copy; My Recipe 2016 App - Hashmat Mh</p>
+  </div>
+</div>
 </body>
 </html>

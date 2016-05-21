@@ -1,4 +1,33 @@
-<h1>Welcome to my Blog</h1>
+<div class="center jumbotron">
+      <!--<div class="container">-->
+           
+            <h1>Welcome to my Recipe App</h1>
+            <h2>This is the homepage for the Professional Ruby on Rails Developer</h2>
+            
+            <%= link_to 'SignUp Now', " ", class: "btn btn-lg btn-success" %>
+          
+    <!--</div>-->
+</div>
 
 <%= link_to 'About Page', about_path %> |
 <%= link_to 'My Blog', articles_path %>
+
+<div class="container">
+<div class="row">
+    <div class="col-lg-4">
+        <h3 class="midrow"> View Recipes as Guest User</h3>
+        <h2 class="left">Browse and view recipe as a guest and Sign up later</h2>
+        <p><%= link_to 'Browse Recipe Listing', "", class: "btn btn-warning btn-small" %></p>
+    </div>
+    <div class="col-lg-4">
+        <h3 class="midrow"> View Recipes as Guest User</h3>
+        <h2 class="left">Browse and view recipe as a guest and Sign up later</h2>
+        <p><%= link_to 'Browse Recipe Listing', "", class: "btn btn-warning btn-small" %></p>
+    </div>
+    <div class="col-lg-4">
+        <h3 class="midrow"> View Recipes as Guest User</h3>
+        <h2 class="left">Browse and view recipe as a guest and Sign up later</h2>
+        <p><%= link_to 'Browse Recipe Listing', "", class: "btn btn-warning btn-small" %></p>
+    </div>
+</div>
+</div>
