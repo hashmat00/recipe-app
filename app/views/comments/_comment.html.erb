@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Comments</th>
+    </tr>
+    <% @comment.each do |x| %>
+    
+    <tr>
+        <td><%= x.name %></td>
+        <td><%= x.body %></td>
+
+        <td><%= link_to 'Delete', comment_path(x), method: :delete, data: {confirm: "Are you sure to delete this article"} %></td>
+    </tr>
+
+
+<% end %>
+</table>
