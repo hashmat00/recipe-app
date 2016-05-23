@@ -1,21 +1,21 @@
 <h1>View your all Recipes</h1>
 <hr/>
 
-<% @recipes.each do |recipe| %>
+<% @recipes.each do |x| %>
 
     <div class="row">
         <div class="col-md-2">
             <section class="chef_info center">
-             <%= link_to gravatar_for(recipe.chef, size: 100) %>
-             <h5>Chef Name: <%= recipe.chef.chefname %></h5>
+             <%= link_to gravatar_for(x.chef, size: 100) %>
+             <h5>Chef Name: <%= x.chef.chefname %></h5>
             </section>
         </div>
         
         <div class="col-lg-8 well">
-            <h4><%= link_to recipe.name, " " %></h4>
-            <p><%= recipe.summary %></p>
+            <h4><%= link_to x.name, recipe_path(x) %></h4>
+            <p><%= x.summary %></p>
             <p>
-                <span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+                <span class="quiet"><small><%= time_ago_in_words(x.created_at) %> ago</small></span>
             </p>
         </div>
         
