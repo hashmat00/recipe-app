@@ -13,13 +13,16 @@
             </section>
         </div>
         
-        <div class="col-lg-8 well">
+        <div class="col-lg-6 well">
             <h4><%= link_to x.name, recipe_path(x) %></h4>
             <p><%= x.summary %></p>
             <p>
                 <span class="quiet"><small><%= time_ago_in_words(x.created_at) %> ago</small></span>
             </p>
         </div>
+        <div class="col-md-4">
+		<%= image_tag(x.picture.url, size: "250x150", class: "gravatar") if x.picture? %>
+	    </div>
         
     </div>
     <hr/>
