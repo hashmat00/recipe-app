@@ -1,12 +1,5 @@
-<% if @article.errors.any? %>
-    <h1>The followign errors prevented articles to be created</h1>
-    
-    <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-       <li><%= msg  %></li> 
-    <% end %>
-    </ul>
-<% end %>
+    <!--displaying errors above form-->
+<%= render 'shared/errors', obj: @recipe %>
 
 <!--creat new articel form-->
 <%= form_for @article do |f| %>
