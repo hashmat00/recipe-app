@@ -3,43 +3,43 @@
 
 <!--<hr/>-->
 
-<%= will_paginate %>
+<div class="container">
+  <%= will_paginate %>
 
-<% @recipes.each do |x| %>
-
-    <div class="row">
-        <div class="col-md-2">
-            <section class="chef_info center">
-             <%= link_to gravatar_for(x.chef, size: 100) %>
-             <h5>Chef Name: <%= x.chef.chefname %></h5>
-            </section>
-        </div>
-        
-        <div class="col-lg-6 well">
-            <h4><%= link_to x.name, recipe_path(x) %></h4>
-            <p><%= x.summary %></p>
-            <p>
-                <span class="quiet"><small>Created: <%= time_ago_in_words(x.created_at) %> ago - </small></span>
+    <% @recipes.each do |x| %>
+        <div class="row">
+            <div class="col-md-2">
+                <section class="chef_info center">
+                 <%= link_to gravatar_for(x.chef, size: 100) %>
+                 <h5>Chef Name: <%= x.chef.chefname %></h5>
+                </section>
+             </div>
             
-                <span class="quiet"><small>Updated: <%= time_ago_in_words(x.updated_at) %> ago</small></span>
-            </p>
-            <div class="pull-right">
-                <%= link_to like_recipe_path(x, like: true), method: :post do %>
-                <i class="glyphicon glyphicon-thumbs-up">&nbsp<%= x.thumbs_up_total %></i>
-                <% end %> &nbsp&nbsp&nbsp&nbsp
-                <%= link_to like_recipe_path(x, like: false), method: :post do %>
-                <i class="glyphicon glyphicon-thumbs-down">&nbsp<%= x.thumbs_down_total %></i>
-                <% end %>
+             <div class="col-lg-6 well">
+                <h4><%= link_to x.name, recipe_path(x) %></h4>
+                <p><%= x.summary %></p>
+                <p>
+                    <span class="quiet"><small>Created: <%= time_ago_in_words(x.created_at) %> ago - </small></span>
                 
-            </div>
+                    <span class="quiet"><small>Updated: <%= time_ago_in_words(x.updated_at) %> ago</small></span>
+                </p>
+                <div class="pull-right">
+                    <%= link_to like_recipe_path(x, like: true), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-up">&nbsp<%= x.thumbs_up_total %></i>
+                    <% end %> &nbsp&nbsp&nbsp&nbsp
+                    <%= link_to like_recipe_path(x, like: false), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-down">&nbsp<%= x.thumbs_down_total %></i>
+                    <% end %>
+                    
+                </div>
+             </div>
+            <div class="col-md-4">
+    		<%= image_tag(x.picture.url, size: "250x150", class: "gravatar") if x.picture? %>
+    	    </div>
+            
         </div>
-        <div class="col-md-4">
-		<%= image_tag(x.picture.url, size: "250x150", class: "gravatar") if x.picture? %>
-	    </div>
-        
-    </div>
-    <hr/>
+        <hr/>
+    <% end %>
+    <%= will_paginate %>
 
-<% end %>
-
-<%= will_paginate %>
+</div>
