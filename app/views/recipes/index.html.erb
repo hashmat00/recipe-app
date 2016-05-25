@@ -46,3 +46,47 @@
     <%= will_paginate %>
 
 </div>
+
+
+
+<div class="card">
+  <img class="card-img-top" data-src="http://greatist.com/sites/default/files/styles/big_share/public/Tag_HealthyRecipes.png?itok=tKgJ8R2O" alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div>
+
+
+
+<% @recipes.each_slice(3) do |works| %>
+<div class="container">
+     <% @recipes.each do |x| %>
+    <div class="row">
+        
+        <div class="card">
+           
+           <%= image_tag(x.picture.url, class:"card-img-top", style: "border-radius: 10px;") if x.picture? %>
+          <div class="card-block">
+            <h4 class="card-title"><%= link_to x.name, recipe_path(x) %></h4>
+            <p class="card-text"><%= x.summary %></p>
+            <p class="card-text"><small class="text-muted">
+                
+                <%= link_to like_recipe_path(x, like: true), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-up">&nbsp<%= x.thumbs_up_total %></i>
+                    <% end %> &nbsp&nbsp&nbsp&nbsp
+                    <%= link_to like_recipe_path(x, like: false), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-down">&nbsp<%= x.thumbs_down_total %></i>
+                    <% end %>
+            </small></p>
+          </div>
+        </div>
+        
+        
+        
+    </div>
+    <% end %>
+</div>
+<% end %>
+
