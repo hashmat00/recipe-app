@@ -1,21 +1,18 @@
 <!--display title from partials page-->
-<%= render 'shared/page_title', title: "View All Recipes" %>
+<%= render 'shared/page_title', title: "Chef: " + @chef.chefname %>
 
-<!--<hr/>-->
 
-<div class="container">
-  <%= will_paginate %>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 center">
+        <%= gravatar_for @chef, size: 200 %>
+        <hr>
+    </div>
+</div>
+
 
     <% @recipes.each do |x| %>
         <div class="row">
-            <div class="col-md-2">
-                <section class="chef_info center">
-                 <%= link_to gravatar_for(x.chef, size: 100), chef_path(x.chef) %>
-                 <h5>Chef Name: <%= x.chef.chefname %></h5>
-                </section>
-             </div>
-            
-             <div class="col-lg-6 well">
+             <div class="col-lg-4 well col-md-offset-3">
                 <h4><%= link_to x.name, recipe_path(x) %></h4>
                 <p><%= x.summary %></p>
                 <p>
@@ -23,9 +20,6 @@
                 
                     <span class="quiet"><small>Updated: <%= time_ago_in_words(x.updated_at) %> ago</small></span>
                 </p>
-                <div class="pull left">
-                        <h5><%= link_to 'view', recipe_path(x), class: "btn btn-info btn-small" %></h5>
-                    </div>
                 <div class="pull-right">
                     <%= link_to like_recipe_path(x, like: true), method: :post do %>
                     <i class="glyphicon glyphicon-thumbs-up">&nbsp<%= x.thumbs_up_total %></i>
@@ -37,12 +31,17 @@
                 </div>
              </div>
             <div class="col-md-4">
-    	<%= image_tag(x.picture.url, class: "img-responsive", style: "border-radius: 10px;") if x.picture? %>
+    		<%= image_tag(x.picture.url, class: "img-responsive", style: "height: 160px") if x.picture? %>
     	    </div>
-            
         </div>
         <hr/>
     <% end %>
-    <%= will_paginate %>
+ <div class="row">
+    <div class="col-md-4 col-md-offset-4 center">
+     <%= will_paginate @recipes %>
+    </div>
+</div>  
 
-</div>
+
+
+

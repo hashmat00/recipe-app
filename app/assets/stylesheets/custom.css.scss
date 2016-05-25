@@ -1,41 +1,44 @@
-$navbar-default-bg: #312312;
-$light-orange: #ff8c00;
-$navbar-default-color: $light-orange;
+// $navbar-default-bg: #312312;
+// $light-orange: #ff8c00;
+// $navbar-default-color: $light-orange;
 
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 
-#logo {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    float: left;
-    margin-right: 10px;
-    font-size: 2em;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    padding-top: 9px;
-    font-weight: bold;
-}
+// #logo {
+//     margin-top: 10px;
+//     margin-bottom: 10px;
+//     float: left;
+//     margin-right: 10px;
+//     font-size: 2em;
+//     color: #fff;
+//     text-transform: uppercase;
+//     letter-spacing: -1px;
+//     padding-top: 9px;
+//     font-weight: bold;
+// }
 
-#logo:hover {
-    color: white;
-    text-decoration: none;
-}
+// #logo:hover {
+//     color: white;
+//     text-decoration: none;
+// }
 
-body {
-    padding-top: 80px;
-}
+// body {
+//     padding-top: 80px;
+// }
 
-.nav_item {
-    margin-left: 25px;
-    float: left;
-    margin-top: 20px;
+// .nav_item {
+//     margin-left: 25px;
+//     float: left;
+//     margin-top: 20px;
     
-}
+// }
 
+.navbar {
+ margin-bottom: 0;
+}
 .center {
     text-align: center;
 }
@@ -74,7 +77,12 @@ h2 {
     margin-top: 10px;
 }
 .gravatar {
-    border-radius: 10px;
+    // border-radius: 10px;
+    max-width: 100px;
+    
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
 }
 
 input, textarea, select, .uneditable-input {
@@ -104,4 +112,33 @@ span.picture {
 
 .quiet {
     color: #777;
+}
+
+@media (min-width: 1300px) {
+    .img-responsive {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+   
+    
+    }
+}
+
+.panel-profile-img {
+    
+    margin: -70px auto 5px auto;
+   
+}
+
+.panel-profile .panel-heading {
+    height: 150px;
+    background-size: cover;
+}
+
+
+.panel-profile .panel-title {
+    margin-bottom: 5px;
+    font-size: 17px;
+    color: inherit;
+        margin-bottom: 5px;
 }
