@@ -1,4 +1,10 @@
 class RecipesController < ApplicationController
+    before_action :set_recipe, only: [:edit, :update, :show, :like]
+    before_action :require_user, except: [:show, :index]
+    before_action :require_same_user, only: [:edit, :destory, :update]
+    
+    
+    
     
     def index
         # @recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_total}.reverse
@@ -13,8 +19,8 @@ class RecipesController < ApplicationController
     end
     
     def create
-        @recipe = Recipe.new(recipe_params)
-       @recipe.chef = Chef.find(1)
+       @recipe = Recipe.new(recipe_params)
+       @recipe.chef = current_user
        if @recipe.save
         flash[:success] = "You have successfully created the Recipe"
         redirect_to recipes_path
@@ -25,15 +31,15 @@ class RecipesController < ApplicationController
     
     
     def show
-        @recipe = Recipe.find(params[:id])
+       #used set_recipe on bottom and top
     end
     
     def edit
-        @recipe = Recipe.find(params[:id])
+        #used set_recipe on bottom and top
     end
     
     def update  
-        @recipe = Recipe.find(params[:id])
+        #used set_recipe on bottom and top
         if @recipe.update(recipe_params)
             flash[:success] = "You have successfully updated the recipe"
             redirect_to recipe_path(@recipe)
@@ -44,15 +50,15 @@ class RecipesController < ApplicationController
     
     
     def destroy
-        @recipe = Recipe.find(params[:id])
+        #used set_recipe on bottom and top
         @recipe.destroy
         flash[:danger] = "You have successfully deleted the recipe"
         redirect_to recipes_path
     end
     
     def like
-        @recipe = Recipe.find(params[:id])
-       like = Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+       #used set_recipe on bottom and top
+       like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
         if like.valid?
             flash[:success] = "Your selection was successfull"
             redirect_to :back
@@ -65,6 +71,8 @@ class RecipesController < ApplicationController
     
     
     
+    
+    
     private
     
         def recipe_params
@@ -72,4 +80,15 @@ class RecipesController < ApplicationController
     end
     
     
+    def set_recipe
+        @recipe = Recipe.find(params[:id])
+    end
+    
+    
+    def require_same_user
+        if current_user != @recipe.chef
+        	flash[:danger] = "You can only edit/delete your own recipe"
+    		redirect_to root_path
+    	end
+    end
 end

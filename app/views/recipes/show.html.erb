@@ -13,8 +13,10 @@
             
             <h5>Chef Name: <%= @recipe.chef.chefname %></h5>
             <hr>
+            <% if logged_in? && @recipe.chef == current_user %>
             <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success"  %>
             <%= link_to 'Delete Recipe', recipe_path(@recipe), class: "btn btn-danger", method: :delete, data: { confirm: "are you sure you want to delte this recipe" } %>
+             <% end %>
              </br>
              </br>
              <p>
