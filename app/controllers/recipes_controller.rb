@@ -38,15 +38,19 @@ class RecipesController < ApplicationController
         #used set_recipe on bottom and top
     end
     
-    def update  
-        #used set_recipe on bottom and top
-        if @recipe.update(recipe_params)
-            flash[:success] = "You have successfully updated the recipe"
-            redirect_to recipe_path(@recipe)
-        else
-            render 'edit'
-        end
+    
+    
+    
+    def update
+    if @recipe.update(recipe_params)
+      flash[:success] = "Your recipe was updated succesfully!"
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
     end
+  end
+    
+    
     
     
     def destroy
