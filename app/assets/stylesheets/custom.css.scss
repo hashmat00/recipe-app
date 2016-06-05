@@ -114,25 +114,31 @@ span.picture {
     color: #777;
 }
 
-@media (min-width: 1300px) {
-    .img-responsive {
-    width: 300px;
-    height: 200px;
-    border-radius: 10px;
-   
-    
-    }
-}
+
 
 .panel-profile-img {
+  margin: -70px auto 5px auto;
+}
+
+.panel-profile-recipe-img {
     
-    margin: -70px auto 5px auto;
+    margin: -40px 330px auto auto;
    
 }
 
 .panel-profile .panel-heading {
     height: 150px;
-    background-size: cover;
+    
+background: rgba(51, 51, 51, 0.26) url(https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=9bd244971b9cb52a8418cf2f66fce464);
+  background-blend-mode: multiply;  
+  background-size: cover;
+  
+}
+.panel-profile .panel-recipe {
+    background: rgba(51, 51, 51, 0.26);
+   height: 100%;
+    width: 100%;
+
 }
 
 
@@ -143,12 +149,14 @@ span.picture {
         margin-bottom: 5px;
 }
 
+@media (min-width: 900px) and (max-width: 1600px)  { 
+
 .carousel-caption {
 
     margin-bottom: 200px;
 
 }
-
+}
 .chef-text-showpage {
     font-size: 3em;
     /* letter-spacing: -2px; */
@@ -159,10 +167,61 @@ span.picture {
 }
 
 
+.thumbs {
+    float: right !important;
+    margin-top: -180px;
+  
+}
+
+.white {
+    
+color: white;
+}
 
 
 
 
+// RECIPE SHOW PAGE 
+
+@media (min-width: 700px) {
+    .img-responsive {
+        position: relative; 
+    
+    height: 500px;
+    // border-radius: 10px;
+    background: rgba(51, 51, 51, 0.26);
+    }
+    
+.show-page-text {
+       position: relative;
+    right: 30%;
+    bottom: 200px;
+    z-index: 10;
+    padding-top: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+} 
+.show-page-text2 {
+    position: relative;
+        right: 8%;
+    bottom: 200px;
+    z-index: 10;
+    /* padding-bottom: 20px; */
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+} 
+.show-page-detail-text{
+    margin-top: -100px;
+}
+.user-avatar {
+    margin-top: -115px;
+        padding-right: 200px;
+}
+
+
+}
 
 
 

@@ -1,61 +1,77 @@
 <!--display title from partials page-->
-<h1 align="center"><%= @recipe.name %></h1>
-<h3 align="center"><%= @recipe.summary %></h3>
-<hr>
 
+<%= image_tag(@recipe.picture.url, class: "img-responsive", style: "width: 100%;") if @recipe.picture? %>
+<div class="container">
+    <div class="show-page-text">
+    <h1><%= @recipe.name %></h1>
+    </div>
+    <div class="show-page-text2">
+    <h3 class="center"><%= @recipe.summary %></h3>
+    </div>
+</div>
 
 <!--Recipe content -->
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 center">
-            <section class="chef_info center">
-            <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
-            
-            <h5>Chef Name: <%= @recipe.chef.chefname %></h5>
-            <hr>
-            <% if logged_in? && @recipe.chef == current_user %>
-            <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success"  %>
-            <%= link_to 'Delete Recipe', recipe_path(@recipe), class: "btn btn-danger", method: :delete, data: { confirm: "are you sure you want to delte this recipe" } %>
-             <% end %>
-             </br>
-             </br>
-             <p>
-                    <span class="quiet"><small>Created: <%= time_ago_in_words(@recipe.created_at) %> ago</small></span>
-                </p>
-                <p>
-                    <span class="quiet"><small>Updated: <%= time_ago_in_words(@recipe.updated_at) %> ago</small></span>
-                </p>
+<div class="container show-page-detail-text">
+    
+
+    <div class="row ">
+        <div class="col-md-4 user-avatar">
+                <section class="chef_info center">
+                    <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
                 
-        <h5><%= link_to 'Return to listing', recipes_path, class: "btn btn-warning btn-small" %></h5>
-        
-            </section>
-            
-        </div>
-        
-        <div class="col-lg-8">
-          
-            
-            <div class="show_recipe">
-                <%= image_tag(@recipe.picture.url, class: "img-responsive", style: "width: 730px;
-    height: 260px;
-    border-radius: 10px;") if @recipe.picture? %>
-            </div>
-            <div class="well">
-          <p>
-            <strong>Steps:</strong>
-            </p>
-            <%= simple_format(@recipe.description) %>
-            <div class="pull-right">
-                <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
-                <i class="glyphicon glyphicon-thumbs-up">&nbsp<%= @recipe.thumbs_up_total %></i>
-                <% end %> &nbsp&nbsp&nbsp&nbsp
-                <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
-                <i class="glyphicon glyphicon-thumbs-down">&nbsp<%= @recipe.thumbs_down_total %></i>
-                <% end %>
+                    <h5>Chef Name: <%= @recipe.chef.chefname %></h5>
+                    <!--<hr>-->
+                </section>
+                <% if logged_in? && @recipe.chef == current_user %>
+                 <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success btn-xs"  %>
+                <%= link_to 'Delete Recipe', recipe_path(@recipe), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: "are you sure you want to delte this recipe" } %>
+                 <% end %>
+                 <hr>
+                 </div>
+                 
+                 
                 
+                     <div class="col-md-3 center">
+                            <span class="quiet"><small>Created: <%= time_ago_in_words(@recipe.created_at) %> ago</small></span> -
+                            <span class="quiet"><small>Updated: <%= time_ago_in_words(@recipe.updated_at) %> ago</small></span>
+                            <hr>
+                       </div>
+                 
+                         <div class="col-md-3 center">
+                             <%= render @recipe.styles %> - 
+                                <%= render @recipe.ingredients %>
+                                    <hr>
+                            </div>
+                            
+                            <div class="col-md-2 center">
+                                <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+                                <i class="glyphicon glyphicon-thumbs-up">&nbsp<%= @recipe.thumbs_up_total %></i>
+                                <% end %> &nbsp&nbsp&nbsp&nbsp
+                                <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+                                <i class="glyphicon glyphicon-thumbs-down">&nbsp<%= @recipe.thumbs_down_total %></i>
+                                <% end %>
+                                <hr>
+                            </div>
+                
+                
+        <div class="row">
+            <div class="col-md-12 col-md-10-offset">
+                <div class="well">
+                      <p>
+                    <strong>Steps:</strong>
+                    </p>
+                    <%= simple_format(@recipe.description) %>
+                    
+                </div>
+                
+                <div class="container">
+                 <h5><%= link_to 'Return to listing', recipes_path, class: "btn btn-warning btn-small" %></h5>
+
+                </div>
             </div>
         </div>
-        </div>
+        
+        
         
  </div>
 </div> 

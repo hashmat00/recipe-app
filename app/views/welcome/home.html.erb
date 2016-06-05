@@ -50,17 +50,98 @@
 
 
 <div class="center jumbotron">
-      <!--<div class="container">-->
+      <div class="container">
            
-            <h1>Welcome to my Recipe App</h1>
-            <h2>View our all Latest Recipe and Chef everyday and weekly</h2>
+            <h3>View our Latest Recipes </h3>
+            <hr/>
+            </br>
+    </div>
+
+        <!--Display Recipes-->
+<div class="container">
+ 
+ <% @recipes.each do |x| %>
+        <div class="col-md-4 m-b-lg">
+          <div class="panel panel-default panel-profile m-b-0">
+            <!--<div class="panel-heading" style="background-image: url(https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=9bd244971b9cb52a8418cf2f66fce464);"></div>-->
+            <!--<div class="panel-heading"></div>-->
+                <%= image_tag(x.picture.url, class: "panel-recipe") if x.picture? %>
+                
+            <div class="panel-body text-center">
+                <section class="panel-profile-recipe-img">
+              <%= link_to gravatar_for(x.chef, size: 40), chef_path(x.chef) %>
+              
+              </section>
+              
+              <h4><%= link_to x.name, recipe_path(x) %></h4>
+              <h2 class="quiet"><%= x.summary.split[0..5].join(" ") %></h2>
+              
+                  <div class>
+                        <span class="icon icon-add-user"></span> <%= link_to 'View recipe', recipe_path(x), class: "btn btn-success btn-small" %>
+                    </div> 
+                    
+                <div class="thumbs">
+                    <%= link_to like_recipe_path(x, like: true), method: :post do %>
+                    <i class="white glyphicon glyphicon-thumbs-up">&nbsp<%= x.thumbs_up_total %></i>
+                    <% end %> &nbsp&nbsp&nbsp&nbsp
+                    <%= link_to like_recipe_path(x, like: false), method: :post do %>
+                    <i class="white glyphicon glyphicon-thumbs-down">&nbsp<%= x.thumbs_down_total %></i>
+                    <% end %>
+                    
+                </div> 
+                
+               
+                <div class="ingredient pull-right">
+                <%= render x.ingredients %></p>
+                </div>
+                <div class="ingredient pull-left">
+                <%= render x.styles %></p>
+                </div>
+                    
+              
+              
+            </div>
+          </div>
+        </div>
+                    
+                 
             
-            <%= link_to 'Signup Now', register_path, class: "btn btn-lg btn-success" %>
-          
-    <!--</div>-->
+     <% end %>
+     
+     <!--pagination on bttom -->
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 center">
+        
+        </div>
+      </div>
+    
+    	    
+            
+</div>
 
 
- <h2>See our latest chefs</h2>
+<!--Recipes ends-->
+
+</div>
+
+
+
+
+
+
+
+<!--Display Chefs-->
+ <div class="container center">
+           
+            <h3>View our Latest Chefs </h3>
+            <hr/>
+            </br>
+    </div>
+
+        <!--Display Chefs-->
+<div class="container">
+    
+    
 <% @chefs.each_slice(3) do |works| %>
 <div class="container">
 <div class="row">
@@ -73,8 +154,6 @@
               <%= link_to gravatar_for(x, size: 100), chef_path(x) %> 
               </section>
               <h2><%= x.chefname %></h2>
-              <p class="quiet">Star trek flow so they klingon me. I wrote this here code. Two times.</p>
-              <a href="//github.com/fat" target="_blank" class="btn btn-primary-outline btn-sm m-b">
                 <span class="icon icon-add-user"></span> <%= link_to 'View Chef', chef_path(x), class: "btn btn-success btn-small" %>
               </a>
             </div>
@@ -94,7 +173,7 @@
 
 
 
-
+<div class="center jumbotron">
 <div class="container">
 <div class="row">
     <div class="col-lg-4">
@@ -114,6 +193,6 @@
     </div>
 </div>
 </div>
-
+</div>
 
 
