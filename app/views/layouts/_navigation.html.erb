@@ -13,6 +13,9 @@
  <!--     <div class="nav_item">-->
  <!--       <%= link_to 'Create Recipe', new_recipe_path, class: "btn btn-default btn-warning" %>-->
  <!--     </div>-->
+   
+           
+          
  <!--   </div>-->
  <!-- </header>-->
   
@@ -38,6 +41,33 @@
         
         <li><%= link_to 'Browse Recipe', recipes_path %></li>
         <li><%= link_to 'Our Chefs', chefs_path %></li>
+        
+               
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+               <%= Style.all.each do |x| %> 
+            <li><%= link_to x.name, style_path(x) %></li>
+           <% end %>
+           <% if logged_in? %>
+           <li role="separator" class="divider"></li>
+           <li><%= link_to 'New Category', new_style_path %></li>
+           <% end %>
+          </ul>
+        </li>
+        
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+               <%= Ingredient.all.each do |x| %> 
+            <li><%= link_to x.name, style_path(x) %></li>
+           <% end %>
+          </ul>
+        </li>
+        
+        
         
         
       </ul>
