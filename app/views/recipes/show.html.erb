@@ -31,15 +31,11 @@
                  
                  
                 
-                     <div class="col-md-3 center">
-                            <span class="quiet"><small>Created: <%= time_ago_in_words(@recipe.created_at) %> ago</small></span> -
-                            <span class="quiet"><small>Updated: <%= time_ago_in_words(@recipe.updated_at) %> ago</small></span>
-                            <hr>
-                       </div>
+                     
                  
-                         <div class="col-md-3 center">
-                             <%= render @recipe.styles %> - 
-                                <%= render @recipe.ingredients %>
+                         <div class="col-md-6 center">
+                             <span style="color: #777">Style: <%= render @recipe.styles %></span> &nbsp 
+                                <span style="color: #777"> Ingredient: <%= render @recipe.ingredients %></span>
                                     <hr>
                             </div>
                             
@@ -57,6 +53,13 @@
         <div class="row">
             <div class="col-md-12 col-md-10-offset">
                 <div class="well">
+                    
+                    <div class="col-md-4 pull-right">
+                            <span class="quiet"><small>Created: <%= time_ago_in_words(@recipe.created_at) %> ago</small></span> - 
+                          <span class="quiet"><small>Updated: <%= time_ago_in_words(@recipe.updated_at) %> ago</small></span>
+                            <hr>
+                       </div>
+                       
                       <p>
                     <strong>Steps:</strong>
                     </p>

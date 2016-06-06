@@ -1,5 +1,5 @@
 class StylesController < ApplicationController
-   
+    before_action :require_user, except: [:show]
    
    def show
     @style = Style.find(params[:id])    

@@ -19,7 +19,7 @@
               </section>
               
               <h4><%= link_to x.name, recipe_path(x) %></h4>
-              <h2 class="quiet"><%= x.summary.split[0..5].join(" ") %></h2>
+              <h2 class="quiet"><%= x.summary.split[0..4].join(" ") %></h2>
               
                   <div class>
                         <span class="icon icon-add-user"></span> <%= link_to 'View recipe', recipe_path(x), class: "btn btn-success btn-small" %>
@@ -34,12 +34,12 @@
                     <% end %>
                     
                 </div> 
-                
+                </br>
                 <div class="styles pull-left">
-                <p><%= render x.styles %></p>
+                <p style="color: #777">Categories: <%= render x.styles %></p>
                 </div>
                 <div class="ingredient pull-right">
-                <%= render x.ingredients %></p>
+                <p style="color: #777">Ingredients: <%= render x.ingredients %></p>
                 </div>
                     
               
@@ -70,56 +70,6 @@
 
 
 
-
-
-
-
-<!--Below section old styles-->
-
-<!--<div class="container">-->
-<!--  <%= will_paginate %>-->
-<!-- <% @recipes.each do |x| %>-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-2">-->
-<!--                <section class="chef_info center">-->
-<!--                 <%= link_to gravatar_for(x.chef, size: 100), chef_path(x.chef) %>-->
-<!--                 <h5>Chef Name: <%= x.chef.chefname %></h5>-->
-<!--                </section>-->
-<!--             </div>-->
-            
-<!--             <div class="col-lg-6 well">-->
-<!--                <h4><%= link_to x.name, recipe_path(x) %></h4>-->
-<!--                <p><%= x.summary %></p>-->
-<!--                <p><%= render x.styles %></p>-->
-<!--                <p><%= render x.ingredients %></p>-->
-<!--                <p>-->
-<!--                    <span class="quiet"><small>Created: <%= time_ago_in_words(x.created_at) %> ago - </small></span>-->
-                
-<!--                    <span class="quiet"><small>Updated: <%= time_ago_in_words(x.updated_at) %> ago</small></span>-->
-<!--                </p>-->
-<!--                <div class="pull left">-->
-<!--                        <h5><%= link_to 'view', recipe_path(x), class: "btn btn-info btn-small" %></h5>-->
-<!--                    </div>-->
-<!--                <div class="pull-right">-->
-<!--                    <%= link_to like_recipe_path(x, like: true), method: :post do %>-->
-<!--                    <i class="glyphicon glyphicon-thumbs-up">&nbsp<%= x.thumbs_up_total %></i>-->
-<!--                    <% end %> &nbsp&nbsp&nbsp&nbsp-->
-<!--                    <%= link_to like_recipe_path(x, like: false), method: :post do %>-->
-<!--                    <i class="glyphicon glyphicon-thumbs-down">&nbsp<%= x.thumbs_down_total %></i>-->
-<!--                    <% end %>-->
-                    
-<!--                </div>-->
-<!--             </div>-->
-<!--            <div class="col-md-4">-->
-<!--    	<%= image_tag(x.picture.url, class: "img-responsive", style: "border-radius: 10px;") if x.picture? %>-->
-<!--    	    </div>-->
-            
-<!--        </div>-->
-<!--        <hr/>-->
-<!--    <% end %>-->
-<!--    <%= will_paginate %>-->
-
-<!--</div>-->
 
 
 
