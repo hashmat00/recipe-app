@@ -31,13 +31,13 @@
         
         <strong>Categories: </strong>
         <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |v|  %>
-        <%= v.label(class: "checkbox-inline") {v.check_box(class: "checkbox") + v.text} %>
+        <%= v.label(class: "checkbox-inline input_checkbox") {v.check_box(class: "checkbox") + v.text} %>
         <% end %>
         <hr/>
       
         <strong>Food: </strong>
         <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |v| %>
-        <%= v.label(class: "checkbox-inline") {v.check_box(class: "checkbox") + v.text } %>
+        <%= v.label(class: "checkbox-inline input_checkbox") {v.check_box(class: "checkbox") + v.text } %>
         <% end %>
         <hr/>
         <span class="picture">
