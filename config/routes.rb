@@ -13,7 +13,14 @@ Rails.application.routes.draw do
     member do
       post 'like'
     end
+    
+    resources :reviews, except: [:index, :show]
+    
   end
+  
+  
+ 
+  
   
   
   resources :chefs, except: [:new]
@@ -29,6 +36,8 @@ Rails.application.routes.draw do
   resources :styles, only: [:new, :create, :show]
   
   resources :ingredients, only: [:new, :create, :show]
+  
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -67,6 +67,29 @@
                     
                 </div>
                 
+                
+               
+                
+                
+                
+                
+                <!--Review form-->
+                <div class="container">
+                   <span class="pull-right"><%= "Total Comments (#{@recipe.reviews.count})" %></span>
+                    <h3> Leave a Review below..<%= render 'reviews/form' %></h3>
+                    
+                </div>
+               
+                
+                
+                <div class="container">
+                    <%= render 'reviews/review' %>
+                </div>
+                
+                
+                
+                
+                <!--Return to listing page-->
                 <div class="container">
                  <h5><%= link_to 'Return to listing', recipes_path, class: "btn btn-warning btn-small" %></h5>
 

@@ -32,6 +32,7 @@ class RecipesController < ApplicationController
     
     def show
        #used set_recipe on bottom and top
+       @review = Review.where(recipe_id: @recipe).order("created_At DESC")
     end
     
     def edit

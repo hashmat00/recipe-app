@@ -1,0 +1,33 @@
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>Review</th>-->
+<!--    </tr>-->
+ 
+<div class="container">
+<% @review.each do |x| %>
+    <div class="row">
+    
+    <div class="col-md-4 center">
+                    <%= link_to gravatar_for(x.chef, size: 50), chef_path(@recipe.chef) %>
+                
+                    <h5 ><%= @recipe.chef.chefname %></h5>
+                    
+                </div>
+        <div class="col-md-4 pull-left">
+            <p><%= x.body %></p>
+           </div>
+           
+          <% if logged_in? && (x.chef == current_user || current_user.admin?) %>
+        <div class="col-md-3 pull-right">
+            <%= link_to 'Delete', [x.recipe, x], method: :delete, data: { confirm: "are you sure you want to delete this Review?" } %>
+            <%= link_to 'Edit', edit_recipe_review_path(x.recipe, x) %>
+        </div>
+        <% end %>
+
+   
+      </div>
+    <hr/>
+     <% end %>
+ 
+ </div>
