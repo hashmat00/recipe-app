@@ -49,7 +49,7 @@
                <% Style.all.each do |style| %> 
             <li><%= link_to style.name, style_path(style) %></li>
            <% end %>
-           <% if logged_in? %>
+           <% if logged_in? && current_user.admin? %>
            <li role="separator" class="divider"></li>
            <li><%= link_to 'New Category', new_style_path %></li>
            <% end %>
@@ -64,7 +64,7 @@
                <% Ingredient.all.each do |ingredient| %> 
             <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
            <% end %>
-           <% if logged_in? %>
+           <% if logged_in? && current_user.admin? %>
            <li role="separator" class="divider"></li>
            <li><%= link_to 'New Food', new_ingredient_path %></li>
            <% end %>
